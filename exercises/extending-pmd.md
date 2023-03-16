@@ -11,7 +11,6 @@ if (...) {
             ....
         }
     }
-
 }
 ```
 Notice that the nested `if`s may not be direct children of the outer `if`s. They may be written, for example, inside a `for` loop or any other statement.
@@ -23,3 +22,10 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
+```xml
+<rule name="DetectDeeplyNestedIf" language="java">
+   <xpath>
+      //IfStatement[count(ancestor::IfStatement) &gt;= 3]
+   </xpath>
+</rule>
+```
